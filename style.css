@@ -54,6 +54,11 @@ form button[type="submit"]:hover{
     background-color: #ff5c5c;
 }
 
+.recipe-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 
 /* Responsive Code */
