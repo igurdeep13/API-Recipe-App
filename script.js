@@ -1,10 +1,9 @@
+
 const searchBox = document.querySelector(".searchBox");
 const searchBtn = document.querySelector(".searchBtn");
 const recipeContainer = document.querySelector(".recipe-container");
 const recipeDetailsContent = document.querySelector(".recipe-details-content");
 const recipeCloseBtn = document.querySelector(".recipe-closeBtn");
-
-
 
 
 // Functions to get Recipes...
@@ -43,9 +42,10 @@ const fetchRecipes = async (query) => {
 
 // Function to fetch ingredients and measurements
 const fetchIngredients = (meal) => {
+  console.log(meal)
   let ingredientsList = "";
   for(let i=1; i<=20; i++){
-    const ingredient = meal[`strIngredients${i}`];
+    const ingredient = meal[`strIngredient${i}`];
     if(ingredient){
       const measure = meal[`strMeasure${i}`];
       ingredientsList += `<li>${measure} ${ingredient}</li>`
@@ -54,7 +54,7 @@ const fetchIngredients = (meal) => {
       break;
     }
   }
-  return ingredientsList
+  return ingredientsList;
 }
 
 
@@ -63,13 +63,21 @@ const openRecipePopup = (meal) => {
   <h2>${meal.strMeal}</h2>
   <h3>Ingredients:</h3>
   <ul>${fetchIngredients(meal)}</ul>
+  <div>
+    <h3>Instructions:</h3>
+    <p>${meal.strInstructions}</p>
+  </div>
   `
-  recipeDetailsContent.parentElement.style.display = 'block'
+  
+  recipeDetailsContent.parentElement.style.display = "block";
 }
+
 
 searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   const searchInput = searchBox.value.trim();
   fetchRecipes(searchInput);
-
+  // openRecipePopup(searchInput)
+  fetchIngredients(searchInput);
 });
+ 
