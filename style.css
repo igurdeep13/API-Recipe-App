@@ -123,7 +123,23 @@ form button[type="submit"]:hover, .recipe button:hover{
     width: 40%;
     height: 60%;
     font-size: 20px;
+    transition: all 0.5s ease-in-out;
+    overflow-y: scroll;
 }
+
+/* Adding scroll bar to recipe detail popup */
+
+.recipe-details::-webkit-scrollbar{
+    width: 10px;
+}
+
+.recipe-details::-webkit-scrollbar-thumb{
+    background: #b5b5ba;
+    border-radius: 16px;
+    --webkit-border-radius: 16px;
+}
+
+
 
 /* Responsive Code */
 
